@@ -1,11 +1,11 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
 import { Email } from '@styled-icons/material-outlined'
 
-import TextField, { TextFieldProps } from '.'
+import Search, { SearchProps } from '.'
 
 export default {
-  title: 'Form/TextField',
-  component: TextField,
+  title: 'Form/Search',
+  component: Search,
   args: {
     label: 'E-mail',
     labelFor: 'Email',
@@ -20,8 +20,8 @@ export default {
   }
 } as Meta
 
-export const Default: Story<TextFieldProps> = (args) => (
+export const Default: Story<SearchProps> = (args) => (
   <div style={{ maxWidth: 300, padding: 15 }}>
-    <TextField {...args} />
+    <Search {...args} />
   </div>
 )

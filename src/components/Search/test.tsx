@@ -4,47 +4,45 @@ import { Email } from '@styled-icons/material-outlined'
 
 import { renderWithTheme } from 'utils/tests/helpers'
 
-import TextField from '.'
+import Search from '.'
 
-describe('<TextField />', () => {
+describe('<Search />', () => {
   it('Renders with Label', () => {
-    renderWithTheme(<TextField label="Label" labelFor="Field" id="Field" />)
+    renderWithTheme(<Search label="Label" labelFor="Field" id="Field" />)
 
     expect(screen.getByLabelText('Label')).toBeInTheDocument()
   })
 
   it('Renders without Label', () => {
-    renderWithTheme(<TextField />)
+    renderWithTheme(<Search />)
 
     expect(screen.queryByLabelText('Label')).not.toBeInTheDocument()
   })
 
   it('Renders with placeholder', () => {
-    renderWithTheme(<TextField placeholder="hey you" />)
+    renderWithTheme(<Search placeholder="hey you" />)
 
     expect(screen.getByPlaceholderText('hey you')).toBeInTheDocument()
   })
 
   it('Renders with Icon', () => {
-    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+    renderWithTheme(<Search icon={<Email data-testid="icon" />} />)
 
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
   it('Renders with Icon on the right side', () => {
     renderWithTheme(
-      <TextField icon={<Email data-testid="icon" />} iconPosition="right" />
+      <Search icon={<Email data-testid="icon" />} iconPosition="right" />
     )
 
     expect(screen.getByTestId('icon').parentElement).toHaveStyle({ order: 1 })
   })
 
   it('Is accessible by tab', () => {
-    renderWithTheme(
-      <TextField label="TextField" labelFor="TextField" id="TextField" />
-    )
+    renderWithTheme(<Search label="Search" labelFor="Search" id="Search" />)
 
-    const input = screen.getByLabelText('TextField')
+    const input = screen.getByLabelText('Search')
     expect(document.body).toHaveFocus()
 
     userEvent.tab()

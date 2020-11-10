@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import * as S from './styles'
 
-export type TextFieldProps = {
+export type SearchProps = {
   onInput?: (value: string) => void
   label?: string
   labelFor?: string
@@ -12,7 +12,7 @@ export type TextFieldProps = {
   iconPosition?: 'left' | 'right'
 } & InputHTMLAttributes<HTMLInputElement>
 
-const TextField = ({
+const Search = ({
   icon,
   iconPosition = 'left',
   label,
@@ -20,7 +20,7 @@ const TextField = ({
   initialValue = '',
   onInput,
   ...props
-}: TextFieldProps) => {
+}: SearchProps) => {
   const [value, setValue] = useState(initialValue)
   const [results, setResults] = useState([])
 
@@ -72,4 +72,4 @@ const TextField = ({
   )
 }
 
-export default TextField
+export default Search
