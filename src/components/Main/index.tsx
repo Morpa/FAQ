@@ -1,4 +1,5 @@
 import { Search as IconSearch } from '@styled-icons/material-outlined'
+import GithubCorner from 'react-github-corner'
 
 import Search from 'components/Search'
 
@@ -25,6 +26,7 @@ const Main = ({
         icon={<IconSearch />}
       />
     </S.InputWrapper>
+    <GithubCorner bannerColor="#F231A5" href="https://github.com/morpa/FAQ" />
   </S.Wrapper>
 )
 
