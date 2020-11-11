@@ -4,40 +4,43 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), 'src', 'posts')
+const faqsDirectory = path.join(process.cwd(), 'src', 'faqs')
 
-export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, '')
+export function getSortedFaqsData() {
+  const fileNames = fs.readdirSync(faqsDirectory)
+  const allFaqsData = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.md$/, '')
 
-    const fullPath = path.join(postsDirectory, fileName)
+    const fullPath = path.join(faqsDirectory, fileName)
+
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     const matterResult = matter(fileContents)
 
     return {
-      id,
+      slug,
       ...matterResult.data
     }
   })
 
-  return allPostsData
+  return allFaqsData
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory)
+export function getAllFaqsIds() {
+  const fileNames = fs.readdirSync(faqsDirectory)
+
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
+        slug: fileName.replace(/\.md$/, '')
       }
     }
   })
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`)
+export async function getFaqData(slug: string) {
+  const fullPath = path.join(faqsDirectory, `${slug}.md`)
+
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
   const matterResult = matter(fileContents)
@@ -45,10 +48,11 @@ export async function getPostData(id: string) {
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
+
   const contentHtml = processedContent.toString()
 
   return {
-    id,
+    slug,
     contentHtml,
     ...matterResult.data
   }

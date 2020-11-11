@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, useState } from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 import * as S from './styles'
 
@@ -11,6 +12,22 @@ export type SearchProps = {
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
 } & InputHTMLAttributes<HTMLInputElement>
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', delay: 0.5 }
+  },
+  exit: {
+    x: '-100vh',
+    transition: { ease: 'easeInOut' }
+  }
+}
 
 const Search = ({
   icon,
@@ -59,12 +76,20 @@ const Search = ({
       </S.InputWrapper>
       {results && (
         <S.ListWrapper>
-          {results.map(({ id, title }) => (
-            <S.ListItem key={id}>
-              <Link href="/posts/[id]" as={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-            </S.ListItem>
+          {results.map(({ slug, title }) => (
+            <motion.div
+              key={slug}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <S.ListItem>
+                <Link href="/faqs/[slug]" as={`/faqs/${slug}`}>
+                  <a>{title}</a>
+                </Link>
+              </S.ListItem>
+            </motion.div>
           ))}
         </S.ListWrapper>
       )}

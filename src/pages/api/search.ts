@@ -1,20 +1,20 @@
 import { NextApiResponse, NextApiRequest } from 'next'
 
-import { getSortedPostsData } from 'lib/posts'
+import { getSortedFaqsData } from 'lib/faqs'
 
-const posts =
+const faqs =
   process.env.NODE_ENV === 'production'
     ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-      require('scripts/caches').posts
-    : getSortedPostsData()
+      require('scripts/caches').faqs
+    : getSortedFaqsData()
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const { q } = req.query
 
   const results = q
-    ? posts.filter(
-        (post: { title: { toLowerCase: () => (string | string[])[] } }) =>
-          post.title.toLowerCase().includes(q)
+    ? faqs.filter(
+        (faq: { title: { toLowerCase: () => (string | string[])[] } }) =>
+          faq.title.toLowerCase().includes(q)
       )
     : []
 

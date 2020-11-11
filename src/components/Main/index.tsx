@@ -1,6 +1,6 @@
-import { Search } from '@styled-icons/material-outlined'
+import { Search as IconSearch } from '@styled-icons/material-outlined'
 
-import TextField from 'components/TextField'
+import Search from 'components/Search'
 
 import * as S from './styles'
 
@@ -18,11 +18,11 @@ const Main = ({
       alt="Um desenvolvedor de frente para uma tela com código."
     />
     <S.InputWrapper>
-      <TextField
+      <Search
         name="search"
         placeholder="Pesquisar"
         type="text"
-        icon={<Search />}
+        icon={<IconSearch />}
       />
     </S.InputWrapper>
   </S.Wrapper>

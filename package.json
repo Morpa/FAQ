@@ -6,16 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --max-warnings=0",
+    "lint": "eslint src",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "cache-faqs": "node scripts/cache.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn cache-faqs && git add cache/data.js"
     }
   },
   "lint-staged": {
@@ -26,6 +27,7 @@
   },
   "dependencies": {
     "@styled-icons/material-outlined": "^10.18.0",
+    "framer-motion": "^2.9.4",
     "gray-matter": "^4.0.2",
     "next": "^10.0.1",
     "next-pwa": "^3.1.4",
