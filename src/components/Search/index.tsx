@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, useState } from 'react'
+import { InputHTMLAttributes, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
@@ -40,6 +40,7 @@ const Search = ({
 }: SearchProps) => {
   const [value, setValue] = useState(initialValue)
   const [results, setResults] = useState([])
+  const [resultsSearch, setResultsSearchs] = useState([])
 
   const searchEndpoint = (value: string) => `/api/search?q=${value}`
 
@@ -50,16 +51,26 @@ const Search = ({
 
     !!onInput && onInput(newValue)
 
-    if (value.length >= 1) {
+    if (value.length) {
       fetch(searchEndpoint(value))
         .then((res) => res.json())
         .then((res) => {
-          setResults(res.results)
+          setResultsSearchs(res.results)
         })
     } else {
-      setResults([])
+      setResultsSearchs([])
     }
   }
+
+  useEffect(() => {
+    const allEndpoint = '/api/all'
+
+    fetch(allEndpoint)
+      .then((res) => res.json())
+      .then((res) => {
+        setResults(res.results)
+      })
+  }, [])
 
   return (
     <>
@@ -74,9 +85,28 @@ const Search = ({
           {...props}
         />
       </S.InputWrapper>
-      {results && (
+      {resultsSearch.length >= 2 && results && (
         <S.ListWrapper>
           {results.map(({ slug, title }) => (
+            <motion.div
+              key={slug}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <S.ListItem>
+                <Link href="/faqs/[slug]" as={`/faqs/${slug}`}>
+                  <a>{title}</a>
+                </Link>
+              </S.ListItem>
+            </motion.div>
+          ))}
+        </S.ListWrapper>
+      )}
+      {resultsSearch && (
+        <S.ListWrapper>
+          {resultsSearch.map(({ slug, title }) => (
             <motion.div
               key={slug}
               variants={containerVariants}
