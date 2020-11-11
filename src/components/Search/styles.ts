@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 
-import { TextFieldProps } from '.'
+import { SearchProps } from '.'
 
-type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
+type IconPositionProps = Pick<SearchProps, 'iconPosition'>
 
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
