@@ -50,7 +50,7 @@ const Search = ({
 
     !!onInput && onInput(newValue)
 
-    if (value.length > 1) {
+    if (value.length >= 1) {
       fetch(searchEndpoint(value))
         .then((res) => res.json())
         .then((res) => {
