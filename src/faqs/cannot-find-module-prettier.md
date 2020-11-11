@@ -1,5 +1,5 @@
 ---
-title: "Cannot find module 'prettier' / Cannot find module 'jsdom' (insira qualquer outro aqui)"
+title: "Cannot find module 'prettier' / Cannot find module 'jsdom'"
 ---
 
 Sempre que tiver um erro dizendo `cannot find module` significa que você não tem o pacote que está tentando importar. Verifique se o nome está escrito certo e caso esteja tudo certo, verifique se está de fato instalado, caso contrário, é só instalar com:

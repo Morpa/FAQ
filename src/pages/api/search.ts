@@ -1,21 +1,18 @@
 import { NextApiResponse, NextApiRequest } from 'next'
 
-import { getSortedFaqsData } from 'lib/faqs'
+import { getALLFaqsData } from 'lib/faqs'
 
-const faqs =
-  process.env.NODE_ENV === 'production'
-    ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-      require('../../../scripts/cache').faqs
-    : getSortedFaqsData()
+const faqs = getALLFaqsData()
+process.env.NODE_ENV === 'production'
+  ? // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require('../../../scripts/cache').faqs
+  : getALLFaqsData()
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default (req: NextApiRequest, res: NextApiResponse): void => {
   const { q } = req.query
 
   const results = q
-    ? faqs.filter(
-        (faq: { title: { toLowerCase: () => (string | string[])[] } }) =>
-          faq.title.toLowerCase().includes(q)
-      )
+    ? faqs.filter((faq) => faq.slug.toLowerCase().includes(`${q}`))
     : []
 
   res.statusCode = 200

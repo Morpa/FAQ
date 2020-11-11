@@ -6,7 +6,7 @@ import html from 'remark-html'
 
 const faqsDirectory = path.join(process.cwd(), 'src', 'faqs')
 
-export function getSortedFaqsData() {
+export function getALLFaqsData() {
   const fileNames = fs.readdirSync(faqsDirectory)
   const allFaqsData = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, '')

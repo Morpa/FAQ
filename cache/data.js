@@ -1,1 +1,1 @@
-export const faqs = [{"slug":"cannot-find-module-prettier","title":"Cannot find module 'prettier' / Cannot find module 'jsdom' (insira qualquer outro aqui)"},{"slug":"prettier-nao-formatando","title":"Meu prettier não está formatando o código"}]
+export const faqs = [{"slug":"cannot-find-module-prettier","title":"Cannot find module 'prettier' / Cannot find module 'jsdom'"},{"slug":"prettier-nao-formatando","title":"Meu prettier não está formatando o código"}]
