@@ -3,8 +3,7 @@ import Link from 'next/link'
 
 import { getAllFaqsIds, getFaqData } from 'lib/faqs'
 
-import * as S from './styles'
-import React from 'react'
+import * as S from 'styles/faq-styles'
 
 type PostDataProps = {
   postData: {
@@ -19,27 +18,25 @@ type ParamsProps = {
   }
 }
 
-export default function Post({ postData }: PostDataProps) {
-  return (
-    <S.Wrapper>
-      <S.Logo
-        src="/img/logo.svg"
-        alt="Imagem de um átomo e React Avançado escrito ao lado."
-      />
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <S.ArticleWrapper>
-        <Link href="/">
-          <a>Voltar</a>
-        </Link>
+const Faq = ({ postData }: PostDataProps) => (
+  <S.Wrapper>
+    <S.Logo
+      src="/img/logo.svg"
+      alt="Imagem de um átomo e React Avançado escrito ao lado."
+    />
+    <Head>
+      <title>{postData.title}</title>
+    </Head>
+    <S.ArticleWrapper>
+      <Link href="/">
+        <a>Voltar</a>
+      </Link>
 
-        <S.Title>{postData.title}</S.Title>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </S.ArticleWrapper>
-    </S.Wrapper>
-  )
-}
+      <S.Title>{postData.title}</S.Title>
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+    </S.ArticleWrapper>
+  </S.Wrapper>
+)
 
 export async function getStaticPaths() {
   const paths = getAllFaqsIds()
@@ -59,3 +56,5 @@ export async function getStaticProps({ params }: ParamsProps) {
     }
   }
 }
+
+export default Faq

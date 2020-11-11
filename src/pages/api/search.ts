@@ -5,7 +5,7 @@ import { getSortedFaqsData } from 'lib/faqs'
 const faqs =
   process.env.NODE_ENV === 'production'
     ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-      require('scripts/caches').faqs
+      require('../../../scripts/cache').faqs
     : getSortedFaqsData()
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
