@@ -21,8 +21,15 @@ export const Logo = styled.img`
 `
 
 export const Description = styled.h2`
-  font-size: 2rem;
-  font-weight: 400;
+  ${({ theme }) => css`
+    font-size: 2rem;
+    font-weight: 400;
+
+    a {
+      color: ${theme.colors.white};
+      text-decoration: none;
+    }
+  `}
 `
 
 export const Illustration = styled.img`

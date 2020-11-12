@@ -4,7 +4,7 @@ const path = require('path')
 const matter = require('gray-matter')
 
 function faqData() {
-  const faqsDirectory = path.join(process.cwd(), 'src', 'faqs')
+  const faqsDirectory = path.join(process.cwd(), '_faqs')
   const fileNames = fs.readdirSync(faqsDirectory)
   const faqs = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, '')

@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
 
-const faqsDirectory = path.join(process.cwd(), 'src', 'faqs')
+const faqsDirectory = path.join(process.cwd(), '_faqs')
 
 export function getAllFaqsData() {
   const fileNames = fs.readdirSync(faqsDirectory)

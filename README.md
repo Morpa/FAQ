@@ -1,4 +1,8 @@
-<h1 align="center">Next Boilerplate</h1>
+<div align="center" id="top">
+  <img src="./.github/logo.svg" alt="React Avancado Boilerplate" />
+</div>
+
+<h1 align="center">FAQ - React Avancado</h1>
 
 <p align="center">
   <img alt="Made by" src="https://img.shields.io/badge/made%20by-Morpa%20-%2356BEB8">
@@ -18,6 +22,12 @@
   <img alt="CI" src="https://github.com/Morpa/boilerplate/workflows/ci/badge.svg?color=56BEB8">
 
 </p>
+
+## How to add a new faq?
+
+You must clone the repository and inside the folder "_faqs" add the question file following the pattern already existing in the other files.
+
+
 
 ## What is inside?
 

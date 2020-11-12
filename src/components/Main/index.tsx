@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Search as IconSearch } from '@styled-icons/material-outlined'
 import GithubCorner from 'react-github-corner'
 
@@ -13,7 +14,11 @@ const Main = ({
       src="/img/logo.svg"
       alt="Imagem de um átomo e React Avançado escrito ao lado."
     />
-    <S.Description>{description}</S.Description>
+    <S.Description>
+      <Link href="https://reactavancado.com.br/">
+        <a>{description}</a>
+      </Link>
+    </S.Description>
     <S.Illustration
       src="/img/hero-illustration.svg"
       alt="Um desenvolvedor de frente para uma tela com código."

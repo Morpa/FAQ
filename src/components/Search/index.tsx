@@ -4,6 +4,10 @@ import { motion } from 'framer-motion'
 
 import * as S from './styles'
 
+type FaqsProps = {
+  slug: string
+}
+
 export type SearchProps = {
   onInput?: (value: string) => void
   label?: string
@@ -42,24 +46,12 @@ const Search = ({
   const [results, setResults] = useState([])
   const [resultsSearch, setResultsSearchs] = useState([])
 
-  const searchEndpoint = (value: string) => `/api/search?q=${value}`
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value
 
     setValue(newValue)
 
     !!onInput && onInput(newValue)
-
-    if (value.length) {
-      fetch(searchEndpoint(value))
-        .then((res) => res.json())
-        .then((res) => {
-          setResultsSearchs(res.results)
-        })
-    } else {
-      setResultsSearchs([])
-    }
   }
 
   useEffect(() => {
@@ -71,6 +63,14 @@ const Search = ({
         setResults(res.results)
       })
   }, [])
+
+  useEffect(() => {
+    setResultsSearchs(
+      results.filter((faq: FaqsProps) =>
+        faq.slug.toLowerCase().includes(value.toLowerCase())
+      )
+    )
+  }, [results, value])
 
   return (
     <>
@@ -85,25 +85,6 @@ const Search = ({
           {...props}
         />
       </S.InputWrapper>
-      {resultsSearch.length >= 2 && results && (
-        <S.ListWrapper>
-          {results.map(({ slug, title }) => (
-            <motion.div
-              key={slug}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <S.ListItem>
-                <Link href="/faqs/[slug]" as={`/faqs/${slug}`}>
-                  <a>{title}</a>
-                </Link>
-              </S.ListItem>
-            </motion.div>
-          ))}
-        </S.ListWrapper>
-      )}
       {resultsSearch && (
         <S.ListWrapper>
           {resultsSearch.map(({ slug, title }) => (
