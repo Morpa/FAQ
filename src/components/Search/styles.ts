@@ -76,6 +76,9 @@ export const ListItem = styled.li`
     padding: ${theme.spacings.xxsmall};
 
     a {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
       text-decoration: none;
       color: ${theme.colors.white};
       width: fit-content;
