@@ -1,6 +1,6 @@
 {
-  "name": "React Avançado - Boilerplate",
-  "short_name": "React Avançado",
+  "name": "React Avançado - FAQ",
+  "short_name": "React Avançado - FAQ",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#06092B",
-  "description": "Boilerplate utilizando Typescript, React, NextJS e Styled Components!",
+  "description": "Dúvidas e erros frequentes do curso de React Avançado e coisas relacionadas também.",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#06092B"
