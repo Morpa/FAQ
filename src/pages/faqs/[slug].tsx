@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
+import { Container } from 'components/Container'
 import { getAllFaqsIds, getFaqData } from 'lib/faqs'
 
 import * as S from 'styles/faq-styles'
@@ -27,14 +28,16 @@ const Faq = ({ postData }: PostDataProps) => (
     <Head>
       <title>{postData.title}</title>
     </Head>
-    <S.ArticleWrapper>
-      <Link href="/">
-        <a>Voltar</a>
-      </Link>
+    <Container>
+      <S.ArticleWrapper>
+        <Link href="/">
+          <a>Voltar</a>
+        </Link>
 
-      <S.Title>{postData.title}</S.Title>
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-    </S.ArticleWrapper>
+        <S.Title>{postData.title}</S.Title>
+        <p dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </S.ArticleWrapper>
+    </Container>
   </S.Wrapper>
 )
 

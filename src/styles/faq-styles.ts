@@ -5,9 +5,12 @@ export const Wrapper = styled.article`
     color: ${theme.colors.black};
     display: flex;
     flex-direction: column;
+    width: 100%;
     padding: 3rem;
-    align-items: center;
-    justify-content: center;
+    flex-flow: column wrap;
+    align-items: baseline;
+    justify-content: flex-start;
+    align-self: auto;
 
     a {
       color: ${theme.colors.primary};
@@ -31,10 +34,14 @@ export const ArticleWrapper = styled.article`
     background-color: ${theme.colors.lightBg};
     color: ${theme.colors.black};
     line-height: 2.8rem;
-    display: flex;
+    display: block;
     flex-direction: column;
-    padding: 13rem;
     align-items: flex-start;
+    padding: 3rem;
+
+    p {
+      word-break: break-word;
+    }
   `}
 `
 export const Title = styled.h1`
