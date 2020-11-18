@@ -38,11 +38,21 @@ export const ArticleWrapper = styled.article`
     align-items: flex-start;
     padding: 3rem;
     margin-top: 5rem;
+  `}
+`
+export const Title = styled.h1`
+  ${({ theme }) => css`
+    color: ${theme.colors.black};
+    font-size: ${theme.font.sizes.xxlarge};
+    margin-top: ${theme.spacings.xxsmall};
+    margin-bottom: ${theme.spacings.medium};
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  `}
+`
 
-    p {
-      word-break: break-word;
-    }
-
+export const Content = styled.div`
+  ${({ theme }) => css`
     code {
       font-size: ${theme.font.sizes.xlarge};
       font-family: monospace;
@@ -55,6 +65,9 @@ export const ArticleWrapper = styled.article`
       border-radius: ${theme.border.radius};
       padding: ${theme.spacings.small};
       margin: ${theme.spacings.xxsmall} 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
 
       & > code {
         font-size: ${theme.font.sizes.medium};
@@ -86,14 +99,6 @@ export const ArticleWrapper = styled.article`
         font-weight: ${theme.font.bold};
       }
     }
-  `}
-`
-export const Title = styled.h1`
-  ${({ theme }) => css`
-    color: ${theme.colors.black};
-    font-size: ${theme.font.sizes.xxlarge};
-    margin-top: ${theme.spacings.xxsmall};
-    margin-bottom: ${theme.spacings.medium};
   `}
 `
 

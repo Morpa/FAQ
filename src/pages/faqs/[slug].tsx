@@ -43,7 +43,7 @@ const Faq = ({ postData }: PostDataProps) => (
         </Link>
 
         <S.Title>{postData.title}</S.Title>
-        <p dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <S.Content dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </S.ArticleWrapper>
     </Container>
   </S.Wrapper>
