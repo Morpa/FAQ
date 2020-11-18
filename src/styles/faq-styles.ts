@@ -42,6 +42,7 @@ export const ArticleWrapper = styled.article`
 `
 export const Title = styled.h1`
   ${({ theme }) => css`
+    width: 100%;
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xxlarge};
     margin-top: ${theme.spacings.xxsmall};
@@ -53,6 +54,9 @@ export const Title = styled.h1`
 
 export const Content = styled.div`
   ${({ theme }) => css`
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     code {
       font-size: ${theme.font.sizes.xlarge};
       font-family: monospace;

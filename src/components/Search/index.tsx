@@ -12,7 +12,7 @@ export type SearchProps = {
   initialValue?: string
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
-  faqs: FaqProps[]
+  faqs?: FaqProps[]
 } & InputHTMLAttributes<HTMLInputElement>
 
 const containerVariants = {
