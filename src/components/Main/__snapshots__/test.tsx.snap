@@ -95,6 +95,12 @@ exports[`<Main /> should render the heading 1`] = `
   font-weight: 400;
 }
 
+.c2 a {
+  color: #FAFAFA;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c3 {
   margin-top: 3rem;
   width: min(30rem,100%);
@@ -116,7 +122,11 @@ exports[`<Main /> should render the heading 1`] = `
   <h2
     class="c2"
   >
-    Dúvidas e erros frequentes do curso de React Avançado e coisas relacionadas também.
+    <a
+      href="https://reactavancado.com.br/"
+    >
+      Dúvidas e erros frequentes do curso de React Avançado e coisas relacionadas também.
+    </a>
   </h2>
   <img
     alt="Um desenvolvedor de frente para uma tela com código."
@@ -189,4 +199,4 @@ exports[`<Main /> should render the heading 1`] = `
     </svg>
   </a>
 </main>
-`;
+`

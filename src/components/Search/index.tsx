@@ -1,12 +1,9 @@
-import { InputHTMLAttributes, useEffect, useState } from 'react'
+import { InputHTMLAttributes, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { FaqProps } from 'lib/faqs'
 
 import * as S from './styles'
-
-type FaqsProps = {
-  slug: string
-}
 
 export type SearchProps = {
   onInput?: (value: string) => void
@@ -15,6 +12,7 @@ export type SearchProps = {
   initialValue?: string
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
+  faqs: FaqProps[]
 } & InputHTMLAttributes<HTMLInputElement>
 
 const containerVariants = {
@@ -39,38 +37,26 @@ const Search = ({
   label,
   labelFor = '',
   initialValue = '',
+  faqs = [],
   onInput,
   ...props
 }: SearchProps) => {
   const [value, setValue] = useState(initialValue)
-  const [results, setResults] = useState([])
-  const [resultsSearch, setResultsSearchs] = useState([])
+  const [results, setResults] = useState<FaqProps[]>(faqs)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value
 
     setValue(newValue)
 
-    !!onInput && onInput(newValue)
-  }
-
-  useEffect(() => {
-    const allEndpoint = '/api/all'
-
-    fetch(allEndpoint)
-      .then((res) => res.json())
-      .then((res) => {
-        setResults(res.results)
-      })
-  }, [])
-
-  useEffect(() => {
-    setResultsSearchs(
-      results.filter((faq: FaqsProps) =>
-        faq.slug.toLowerCase().includes(value.toLowerCase())
+    setResults(
+      faqs.filter((faq: FaqProps) =>
+        faq.slug.toLowerCase().includes(newValue.toLowerCase())
       )
     )
-  }, [results, value])
+
+    !!onInput && onInput(newValue)
+  }
 
   return (
     <>
@@ -85,9 +71,9 @@ const Search = ({
           {...props}
         />
       </S.InputWrapper>
-      {resultsSearch && (
+      {results && (
         <S.ListWrapper>
-          {resultsSearch.map(({ slug, title }) => (
+          {results.map(({ slug, title }) => (
             <motion.div
               key={slug}
               variants={containerVariants}

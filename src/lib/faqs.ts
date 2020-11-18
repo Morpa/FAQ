@@ -6,6 +6,12 @@ import html from 'remark-html'
 
 const faqsDirectory = path.join(process.cwd(), '_faqs')
 
+export type FaqProps = {
+  slug: string
+  title?: string
+  contentHtml?: string
+}
+
 export function getAllFaqsData() {
   const fileNames = fs.readdirSync(faqsDirectory)
   const allFaqsData = fileNames.map((fileName) => {
