@@ -27,20 +27,64 @@ export const Wrapper = styled.article`
 
 export const Logo = styled.img`
   width: 25rem;
-  margin-bottom: 5rem;
 `
 export const ArticleWrapper = styled.article`
   ${({ theme }) => css`
     background-color: ${theme.colors.lightBg};
     color: ${theme.colors.black};
     line-height: 2.8rem;
-    display: block;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 3rem;
+    margin-top: 5rem;
 
     p {
       word-break: break-word;
+    }
+
+    code {
+      font-size: ${theme.font.sizes.xlarge};
+      font-family: monospace;
+      font-weight: ${theme.font.bold};
+      background-color: ${theme.colors.lightGray};
+    }
+
+    pre {
+      background-color: ${theme.colors.black};
+      border-radius: ${theme.border.radius};
+      padding: ${theme.spacings.small};
+      margin: ${theme.spacings.xxsmall} 0;
+
+      & > code {
+        font-size: ${theme.font.sizes.medium};
+        font-family: monospace;
+        color: ${theme.colors.white};
+        background-color: transparent;
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin: ${theme.spacings.xxsmall} 0;
+
+      & > li::before {
+        content: '\u2714';
+        font-size: ${theme.font.sizes.xlarge};
+        color: ${theme.colors.primary};
+        margin-right: ${theme.spacings.xxsmall};
+      }
+    }
+
+    ol {
+      margin: ${theme.spacings.xxsmall} 0;
+      position: relative;
+      left: ${theme.spacings.xsmall};
+
+      & > li::marker {
+        color: ${theme.colors.primary};
+        font-weight: ${theme.font.bold};
+      }
     }
   `}
 `
@@ -48,6 +92,13 @@ export const Title = styled.h1`
   ${({ theme }) => css`
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xxlarge};
-    margin-bottom: ${theme.spacings.medium};
+    margin: ${theme.spacings.medium} 0;
+  `}
+`
+
+export const BackLink = styled.a`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.large};
+    cursor: pointer;
   `}
 `
