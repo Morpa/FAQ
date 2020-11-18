@@ -92,7 +92,8 @@ export const Title = styled.h1`
   ${({ theme }) => css`
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xxlarge};
-    margin: ${theme.spacings.medium} 0;
+    margin-top: ${theme.spacings.xxsmall};
+    margin-bottom: ${theme.spacings.medium};
   `}
 `
 
