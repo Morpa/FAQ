@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Container } from 'components/Container'
 import { getAllFaqsIds, getFaqData } from 'lib/faqs'
 
+import { ArrowBack } from '@styled-icons/material-outlined'
 import * as S from 'styles/faq-styles'
 
 type PostDataProps = {
@@ -21,17 +22,24 @@ type ParamsProps = {
 
 const Faq = ({ postData }: PostDataProps) => (
   <S.Wrapper>
-    <S.Logo
-      src="/img/logo.svg"
-      alt="Imagem de um átomo e React Avançado escrito ao lado."
-    />
+    <Link href="/">
+      <a>
+        <S.Logo
+          src="/img/logo.svg"
+          alt="Imagem de um átomo e React Avançado escrito ao lado."
+        />
+      </a>
+    </Link>
     <Head>
       <title>{postData.title}</title>
     </Head>
     <Container>
       <S.ArticleWrapper>
         <Link href="/">
-          <a>Voltar</a>
+          <S.BackLink>
+            <ArrowBack size={25} />
+            Voltar
+          </S.BackLink>
         </Link>
 
         <S.Title>{postData.title}</S.Title>
