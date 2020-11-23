@@ -13,7 +13,7 @@ exports[`<Main /> should render the heading 1`] = `
   display: -ms-flexbox;
   display: flex;
   background: #EAEAEA;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
   padding: 0 1.6rem;
   border: 0.2rem solid;
   border-color: #EAEAEA;

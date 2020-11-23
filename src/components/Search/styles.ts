@@ -9,7 +9,7 @@ export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     background: ${theme.colors.lightGray};
-    border-radius: 0.2rem;
+    border-radius: ${theme.border.radius};
     padding: 0 ${theme.spacings.xsmall};
     border: 0.2rem solid;
     border-color: ${theme.colors.lightGray};
@@ -103,6 +103,7 @@ export const Anchor = styled.a<AnchorProps>`
     background: ${theme.colors.primary};
     margin-bottom: 0.3rem;
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
+    border-radius: ${theme.border.radius};
     transition: ${theme.transition.fast};
     text-decoration: none;
     text-align: left;
