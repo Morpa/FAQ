@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
+import { darken } from 'polished'
 
 import { SearchProps } from '.'
 
@@ -15,6 +16,7 @@ export const InputWrapper = styled.div`
 
     &:focus-within {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
+      border-color: ${theme.colors.primary};
     }
   `}
 `
@@ -53,6 +55,7 @@ export const Icon = styled.div<IconPositionProps>`
     }
   `}
 `
+
 export const ListWrapper = styled.ul`
   ${({ theme }) => css`
     list-style: none;
@@ -64,25 +67,49 @@ export const ListWrapper = styled.ul`
     right: 0;
   `}
 `
+export const ListItem = styled.li``
 
-export const ListItem = styled.li`
+export const ListItemNotFound = styled.li`
   ${({ theme }) => css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.2rem;
-    background: ${theme.colors.primary};
-    margin: 0 0 ${theme.spacings.xxsmall};
-    padding: ${theme.spacings.xxsmall};
+    font-size: ${theme.font.sizes.small};
+    font-style: italic;
+    font-weight: ${theme.font.light};
+    color: ${theme.colors.lightGray};
+    text-align: left;
 
-    a {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      text-decoration: none;
-      color: ${theme.colors.white};
-      width: fit-content;
-      height: fit-content;
+    span {
+      color: ${theme.colors.secondary};
+      font-weight: ${theme.font.bold};
     }
+  `}
+`
+
+type AnchorProps = {
+  highlighted?: boolean
+}
+
+const anchorModifiers = {
+  highlighted: (theme: DefaultTheme) => css`
+    background: ${darken(0.15, theme.colors.primary)};
+    padding-left: ${theme.spacings.small};
+    border-left: 0.4rem solid ${darken(0.1, theme.colors.secondary)};
+  `
+}
+
+export const Anchor = styled.a<AnchorProps>`
+  ${({ theme, highlighted }) => css`
+    display: block;
+    color: ${theme.colors.white};
+    background: ${theme.colors.primary};
+    margin-bottom: 0.3rem;
+    padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
+    transition: ${theme.transition.fast};
+    text-decoration: none;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    ${highlighted && anchorModifiers.highlighted(theme)}
   `}
 `

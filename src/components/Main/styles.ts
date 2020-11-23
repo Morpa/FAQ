@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.main`
   ${({ theme }) => css`
@@ -38,6 +39,10 @@ export const Illustration = styled.img`
 `
 
 export const InputWrapper = styled.div`
-  width: 60%;
+  width: 100%;
   margin-top: 3rem;
+
+  ${media.greaterThan('medium')`
+    width: 70%;
+  `}
 `
