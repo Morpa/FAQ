@@ -1,14 +1,16 @@
 import { InputHTMLAttributes, useState } from 'react'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { FaqProps } from 'lib/faqs'
+
+import { useCombobox } from 'downshift'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import * as S from './styles'
 
 export type SearchProps = {
   onInput?: (value: string) => void
   label?: string
-  labelFor?: string
   initialValue?: string
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
@@ -35,7 +37,6 @@ const Search = ({
   icon,
   iconPosition = 'left',
   label,
-  labelFor = '',
   initialValue = '',
   faqs = [],
   onInput,
@@ -43,53 +44,120 @@ const Search = ({
 }: SearchProps) => {
   const [value, setValue] = useState(initialValue)
   const [results, setResults] = useState<FaqProps[]>(faqs)
+  const router = useRouter()
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value
-
-    setValue(newValue)
-
-    setResults(
-      faqs.filter((faq: FaqProps) =>
-        faq.slug.toLowerCase().includes(newValue.toLowerCase())
-      )
-    )
-
-    !!onInput && onInput(newValue)
+  function routeToFaq(faq: FaqProps) {
+    router.push({
+      pathname: '/faqs/[slug]',
+      query: { slug: faq.slug }
+    })
   }
+
+  const {
+    isOpen,
+    getLabelProps,
+    getMenuProps,
+    getInputProps,
+    getComboboxProps,
+    getItemProps,
+    highlightedIndex,
+    openMenu
+  } = useCombobox({
+    id: 'faq-autosuggest',
+    items: results,
+    inputValue: value,
+    stateReducer: (state, actionAndChanges) => {
+      const { changes, type } = actionAndChanges
+      switch (type) {
+        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.ItemClick:
+          return {
+            ...changes,
+            isOpen: true
+          }
+      }
+      return changes
+    },
+    onStateChange: ({ inputValue, type, selectedItem }) => {
+      switch (type) {
+        case useCombobox.stateChangeTypes.InputChange:
+          {
+            if (inputValue !== undefined) {
+              setValue(inputValue)
+              setResults(
+                faqs.filter((faq: FaqProps) =>
+                  faq.slug.toLowerCase().includes(inputValue.toLowerCase())
+                )
+              )
+              !!onInput && onInput(inputValue)
+            }
+          }
+          break
+        //case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.InputBlur:
+          selectedItem && routeToFaq(selectedItem)
+          break
+        default:
+          break
+      }
+    }
+  })
+
+  /** Open menu by default */
+  !isOpen && openMenu()
 
   return (
     <>
-      {!!label && <S.Label htmlFor={labelFor}>{label}</S.Label>}
-      <S.InputWrapper>
+      {label && <S.Label {...getLabelProps()}>{label}</S.Label>}
+      <S.InputWrapper {...getComboboxProps()}>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
         <S.Input
           type="text"
-          onChange={onChange}
+          {...getInputProps()}
           value={value}
           iconPosition={iconPosition}
           {...props}
         />
       </S.InputWrapper>
-      {results && (
-        <S.ListWrapper>
-          {results.map(({ slug, title }) => (
+      <S.ListWrapper {...getMenuProps()}>
+        {isOpen &&
+          results.map((faq, index) => (
             <motion.div
-              key={slug}
+              key={faq.slug}
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
             >
               <S.ListItem>
-                <Link href="/faqs/[slug]" as={`/faqs/${slug}`}>
-                  <a>{title}</a>
+                <Link
+                  href="/faqs/[slug]"
+                  as={`/faqs/${faq.slug}`}
+                  scroll={false}
+                  passHref
+                >
+                  <S.Anchor
+                    highlighted={index === highlightedIndex}
+                    {...getItemProps({
+                      item: faq,
+                      index
+                    })}
+                    title={faq.title}
+                  >
+                    {faq.title}
+                  </S.Anchor>
                 </Link>
               </S.ListItem>
             </motion.div>
           ))}
-        </S.ListWrapper>
-      )}
+        {!results.length && (
+          <S.ListItemNotFound>
+            Nenhum resultado encontrado para {` `}
+            <span>{value}</span>
+          </S.ListItemNotFound>
+        )}
+      </S.ListWrapper>
     </>
   )
 }

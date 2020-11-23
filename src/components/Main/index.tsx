@@ -34,9 +34,8 @@ const Main = ({
       />
       <S.InputWrapper>
         <Search
-          name="search"
+          aria-label="Procure entre perguntas mais frequentes"
           placeholder="Pesquisar"
-          type="text"
           icon={<IconSearch />}
           faqs={faqs}
         />

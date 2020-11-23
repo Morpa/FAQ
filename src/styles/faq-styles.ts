@@ -57,11 +57,17 @@ export const Content = styled.div`
     width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    h3 {
+      font-size: ${theme.font.sizes.xlarge};
+      margin: ${theme.spacings.xsmall} 0;
+    }
     code {
       font-size: ${theme.font.sizes.xlarge};
       font-family: monospace;
       font-weight: ${theme.font.bold};
-      background-color: ${theme.colors.lightGray};
+      padding: 0 0.4rem;
+      margin: 0 0.2rem;
+      background-color: #d1d5db;
     }
 
     pre {
@@ -75,6 +81,7 @@ export const Content = styled.div`
 
       & > code {
         font-size: ${theme.font.sizes.medium};
+        font-weight: ${theme.font.light};
         font-family: monospace;
         color: ${theme.colors.white};
         background-color: transparent;

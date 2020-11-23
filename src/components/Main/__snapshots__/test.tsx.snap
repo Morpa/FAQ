@@ -21,6 +21,7 @@ exports[`<Main /> should render the heading 1`] = `
 
 .c5:focus-within {
   box-shadow: 0 0 0.5rem #F231A5;
+  border-color: #F231A5;
 }
 
 .c8 {
@@ -59,6 +60,19 @@ exports[`<Main /> should render the heading 1`] = `
   padding: 0;
   left: 0;
   right: 0;
+}
+
+.c10 {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #EAEAEA;
+  text-align: left;
+}
+
+.c10 span {
+  color: #3CD3C1;
+  font-weight: 600;
 }
 
 .c0 {
@@ -107,8 +121,14 @@ exports[`<Main /> should render the heading 1`] = `
 }
 
 .c4 {
-  width: 60%;
+  width: 100%;
   margin-top: 3rem;
+}
+
+@media (min-width:768px) {
+  .c4 {
+    width: 70%;
+  }
 }
 
 <main
@@ -137,7 +157,11 @@ exports[`<Main /> should render the heading 1`] = `
     class="c4"
   >
     <div
+      aria-expanded="true"
+      aria-haspopup="listbox"
+      aria-owns="faq-autosuggest-menu"
       class="c5"
+      role="combobox"
     >
       <div
         class="c6"
@@ -160,16 +184,32 @@ exports[`<Main /> should render the heading 1`] = `
         </svg>
       </div>
       <input
+        aria-autocomplete="list"
+        aria-controls="faq-autosuggest-menu"
+        aria-label="Procure entre perguntas mais frequentes"
+        aria-labelledby="faq-autosuggest-label"
+        autocomplete="off"
         class="c8"
-        name="search"
+        id="faq-autosuggest-input"
         placeholder="Pesquisar"
         type="text"
         value=""
       />
     </div>
     <ul
+      aria-labelledby="faq-autosuggest-label"
       class="c9"
-    />
+      id="faq-autosuggest-menu"
+      role="listbox"
+    >
+      <li
+        class="c10"
+      >
+        Nenhum resultado encontrado para 
+         
+        <span />
+      </li>
+    </ul>
   </div>
   <a
     aria-label="Open GitHub project"
