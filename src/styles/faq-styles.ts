@@ -40,6 +40,28 @@ export const ArticleWrapper = styled.article`
     margin-top: 5rem;
   `}
 `
+
+export const Header = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.large};
+    transition: ${theme.transition.default};
+  `}
+`
+
+export const BackLink = styled.a`
+  display: flex;
+  cursor: pointer;
+`
+
+export const CopyWrapper = styled.div`
+  cursor: pointer;
+`
+
 export const Title = styled.h1`
   ${({ theme }) => css`
     width: 100%;
@@ -110,12 +132,5 @@ export const Content = styled.div`
         font-weight: ${theme.font.bold};
       }
     }
-  `}
-`
-
-export const BackLink = styled.a`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.large};
-    cursor: pointer;
   `}
 `
