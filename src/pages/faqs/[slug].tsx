@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 import { Container } from 'components/Container'
 import { getAllFaqsIds, getFaqData } from 'lib/faqs'
@@ -34,17 +35,25 @@ const Faq = ({ postData }: PostDataProps) => (
       <title>{postData.title}</title>
     </Head>
     <Container>
-      <S.ArticleWrapper>
-        <Link href="/">
-          <S.BackLink>
-            <ArrowBack size={25} />
-            Voltar
-          </S.BackLink>
-        </Link>
+      <motion.div
+        initial={{ transform: 'translateY(100%)' }}
+        animate={{ transform: 'translateY(0px)' }}
+        exit={{ transform: 'translateY(100%)' }}
+      >
+        <S.ArticleWrapper>
+          <Link href="/">
+            <S.BackLink>
+              <ArrowBack size={25} />
+              Voltar
+            </S.BackLink>
+          </Link>
 
-        <S.Title>{postData.title}</S.Title>
-        <S.Content dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </S.ArticleWrapper>
+          <S.Title>{postData.title}</S.Title>
+          <S.Content
+            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+          />
+        </S.ArticleWrapper>
+      </motion.div>
     </Container>
   </S.Wrapper>
 )
