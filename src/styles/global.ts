@@ -13,7 +13,7 @@ const GlobalStyles: GlobalStyleComponent<
   GlobalStylesProps,
   DefaultTheme
 > = createGlobalStyle`
-  @font-face {
+  /* @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
@@ -38,7 +38,7 @@ const GlobalStyles: GlobalStyleComponent<
     font-display: swap;
     src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
         url('/fonts/poppins-v12-latin-600.woff2') format('woff2')
-  }
+  } */
 
   * {
     margin: 0;
