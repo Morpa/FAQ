@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img src="./.github/logo.svg" alt="React Avancado Boilerplate" />
+  <img src="./.github/faq.svg" alt="React Avancado Boilerplate" />
 </div>
 
 <h1 align="center">FAQ - React Avancado</h1>
