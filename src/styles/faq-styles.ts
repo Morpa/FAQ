@@ -67,6 +67,7 @@ export const Title = styled.h1`
     width: 100%;
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.xxlarge};
+    font-weight: ${theme.font.bold};
     margin-top: ${theme.spacings.xxsmall};
     margin-bottom: ${theme.spacings.medium};
     word-wrap: break-word;
