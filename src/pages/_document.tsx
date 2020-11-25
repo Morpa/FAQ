@@ -38,27 +38,9 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,900&display=swap"
-            rel="stylesheet"
-          />
           {/* <link
             rel="preload"
             href="/fonts/poppins-v12-latin-300.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/poppins-v12-latin-regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/poppins-v12-latin-600.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
