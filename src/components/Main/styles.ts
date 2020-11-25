@@ -15,21 +15,27 @@ export const Wrapper = styled.main`
     justify-content: center;
   `}
 `
-
-export const Logo = styled.img`
-  width: 25rem;
-  margin-bottom: 2rem;
-`
-
-export const Description = styled.h2`
+export const Description = styled.div`
   ${({ theme }) => css`
-    font-size: 2rem;
-    font-weight: 400;
+    font-weight: ${theme.font.normal};
 
     a {
-      color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      font-weight: ${theme.font.bold};
       text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        transition: ${theme.transition.default};
+      }
     }
+
+    svg {
+      color: ${theme.colors.secondary};
+    }
+    ${media.greaterThan('medium')`
+      text-align: left;
+    `}
   `}
 `
 
@@ -44,5 +50,45 @@ export const InputWrapper = styled.div`
 
   ${media.greaterThan('medium')`
     width: 70%;
+  `}
+`
+export const LogoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${media.greaterThan('medium')`
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+  `}
+`
+export const Logo = styled.img`
+  width: 25rem;
+  margin-right: 1rem;
+`
+
+export const Faq = styled.div`
+  ${({ theme }) => css`
+    background-image: linear-gradient(45deg, #8a2387, #f23131);
+    font-family: '${theme.font.family}';
+    font-size: ${theme.font.sizes.huge};
+    font-weight: 900;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    padding-right: ${theme.spacings.xxsmall};
+    letter-spacing: -5px;
+  `}
+`
+
+export const Hero = styled.div`
+  ${({ theme }) => css`
+    margin: ${theme.spacings.small} 0;
+    ${media.greaterThan('medium')`
+      width: 70%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+    `};
   `}
 `

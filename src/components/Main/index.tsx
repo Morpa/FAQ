@@ -1,37 +1,50 @@
 import Link from 'next/link'
-import { Search as IconSearch } from '@styled-icons/material-outlined'
+import {
+  Search as IconSearch,
+  QuestionAnswer
+} from '@styled-icons/material-outlined'
 import GithubCorner from 'react-github-corner'
 
 import { FaqProps } from 'lib/faqs'
 
 import Search from 'components/Search'
+import Heading from 'components/Heading'
+import MediaMatch from 'components/MediaMatch'
 
 import * as S from './styles'
 
 type MainProps = {
-  description?: string
   faqs?: FaqProps[]
 }
 
-const Main = ({
-  description = 'Dúvidas e erros frequentes do curso de React Avançado e coisas relacionadas também.',
-  faqs = []
-}: MainProps) => {
+const Main = ({ faqs = [] }: MainProps) => {
   return (
     <S.Wrapper>
-      <S.Logo
-        src="/img/logo.svg"
-        alt="Imagem de um átomo e React Avançado escrito ao lado."
-      />
-      <S.Description>
-        <Link href="https://reactavancado.com.br/">
-          <a>{description}</a>
-        </Link>
-      </S.Description>
-      <S.Illustration
-        src="/img/hero-illustration.svg"
-        alt="Um desenvolvedor de frente para uma tela com código."
-      />
+      <S.LogoWrapper>
+        <S.Logo
+          src="/img/logo.svg"
+          alt="Imagem de um átomo e React Avançado escrito ao lado."
+        />
+        <S.Faq>FAQ</S.Faq>
+      </S.LogoWrapper>
+      <S.Hero>
+        <S.Description>
+          <Heading>
+            <MediaMatch greaterThan="large">
+              <QuestionAnswer size={60} />
+            </MediaMatch>
+            Dúvidas e erros frequentes do curso de {` `}
+            <Link href="https://reactavancado.com.br/">
+              <a>React Avançado</a>
+            </Link>
+            {` `} e coisas relacionadas também.
+          </Heading>
+        </S.Description>
+        <S.Illustration
+          src="/img/faq.svg"
+          alt="Duas pessoas com um ponto interrogação."
+        />
+      </S.Hero>
       <S.InputWrapper>
         <Search
           aria-label="Procure entre perguntas mais frequentes"

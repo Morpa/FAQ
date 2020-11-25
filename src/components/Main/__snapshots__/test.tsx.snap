@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Main /> should render the heading 1`] = `
-.c7 {
+.c8 {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
 }
 
-.c5 {
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -19,12 +19,12 @@ exports[`<Main /> should render the heading 1`] = `
   border-color: #EAEAEA;
 }
 
-.c5:focus-within {
+.c11:focus-within {
   box-shadow: 0 0 0.5rem #F231A5;
   border-color: #F231A5;
 }
 
-.c8 {
+.c13 {
   color: #030517;
   font-family: Poppins,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans- serif;
   font-size: 1.6rem;
@@ -36,7 +36,7 @@ exports[`<Main /> should render the heading 1`] = `
   width: 100%;
 }
 
-.c6 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,11 +48,11 @@ exports[`<Main /> should render the heading 1`] = `
   order: 0;
 }
 
-.c6 > svg {
+.c12 > svg {
   width: 100%;
 }
 
-.c9 {
+.c14 {
   list-style: none;
   overflow: hidden;
   top: 100%;
@@ -62,7 +62,7 @@ exports[`<Main /> should render the heading 1`] = `
   right: 0;
 }
 
-.c10 {
+.c15 {
   font-size: 1.4rem;
   font-style: italic;
   font-weight: 300;
@@ -70,9 +70,19 @@ exports[`<Main /> should render the heading 1`] = `
   text-align: left;
 }
 
-.c10 span {
+.c15 span {
   color: #3CD3C1;
   font-weight: 600;
+}
+
+.c6 {
+  color: #FAFAFA;
+  font-weight: 400;
+  font-size: 2.2rem;
+}
+
+.c7 {
+  display: none;
 }
 
 .c0 {
@@ -99,76 +109,204 @@ exports[`<Main /> should render the heading 1`] = `
   justify-content: center;
 }
 
-.c1 {
-  width: 25rem;
-  margin-bottom: 2rem;
-}
-
-.c2 {
-  font-size: 2rem;
+.c5 {
   font-weight: 400;
 }
 
-.c2 a {
-  color: #FAFAFA;
+.c5 a {
+  color: #F231A5;
+  font-weight: 600;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c3 {
+.c5 a:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.c5 svg {
+  color: #3CD3C1;
+}
+
+.c9 {
   margin-top: 3rem;
   width: min(30rem,100%);
 }
 
-.c4 {
+.c10 {
   width: 100%;
   margin-top: 3rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  width: 25rem;
+  margin-right: 1rem;
+}
+
+.c3 {
+  background-image: linear-gradient(45deg,#8a2387,#f23131);
+  font-family: 'Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans- serif';
+  font-size: 5.2rem;
+  font-weight: 900;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  padding-right: 0.8rem;
+  -webkit-letter-spacing: -5px;
+  -moz-letter-spacing: -5px;
+  -ms-letter-spacing: -5px;
+  letter-spacing: -5px;
+}
+
+.c4 {
+  margin: 2.4rem 0;
+}
+
+@media (min-width:1170px) {
+  .c6 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width:1170px) {
+  .c7 {
+    display: block;
+  }
+}
+
+@media (min-width:768px) {
+  .c5 {
+    text-align: left;
+  }
+}
+
+@media (min-width:768px) {
+  .c10 {
+    width: 70%;
+  }
+}
+
+@media (min-width:768px) {
+  .c1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 70%;
+  }
 }
 
 @media (min-width:768px) {
   .c4 {
     width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 }
 
 <main
   class="c0"
 >
-  <img
-    alt="Imagem de um átomo e React Avançado escrito ao lado."
+  <div
     class="c1"
-    src="/img/logo.svg"
-  />
-  <h2
-    class="c2"
   >
-    <a
-      href="https://reactavancado.com.br/"
+    <img
+      alt="Imagem de um átomo e React Avançado escrito ao lado."
+      class="c2"
+      src="/img/logo.svg"
+    />
+    <div
+      class="c3"
     >
-      Dúvidas e erros frequentes do curso de React Avançado e coisas relacionadas também.
-    </a>
-  </h2>
-  <img
-    alt="Um desenvolvedor de frente para uma tela com código."
-    class="c3"
-    src="/img/hero-illustration.svg"
-  />
+      FAQ
+    </div>
+  </div>
   <div
     class="c4"
+  >
+    <div
+      class="c5"
+    >
+      <h2
+        class="c6"
+        color="white"
+      >
+        <div
+          class="c7"
+        >
+          <svg
+            aria-hidden="true"
+            class="c8"
+            fill="currentColor"
+            focusable="false"
+            height="60"
+            viewBox="0 0 24 24"
+            width="60"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"
+            />
+          </svg>
+        </div>
+        Dúvidas e erros frequentes do curso de 
+         
+        <a
+          href="https://reactavancado.com.br/"
+        >
+          React Avançado
+        </a>
+         
+         e coisas relacionadas também.
+      </h2>
+    </div>
+    <img
+      alt="Duas pessoas com um ponto interrogação."
+      class="c9"
+      src="/img/faq.svg"
+    />
+  </div>
+  <div
+    class="c10"
   >
     <div
       aria-expanded="true"
       aria-haspopup="listbox"
       aria-owns="faq-autosuggest-menu"
-      class="c5"
+      class="c11"
       role="combobox"
     >
       <div
-        class="c6"
+        class="c12"
       >
         <svg
           aria-hidden="true"
-          class="c7"
+          class="c8"
           fill="currentColor"
           focusable="false"
           viewBox="0 0 24 24"
@@ -189,7 +327,7 @@ exports[`<Main /> should render the heading 1`] = `
         aria-label="Procure entre perguntas mais frequentes"
         aria-labelledby="faq-autosuggest-label"
         autocomplete="off"
-        class="c8"
+        class="c13"
         id="faq-autosuggest-input"
         placeholder="Pesquisar"
         type="text"
@@ -198,12 +336,12 @@ exports[`<Main /> should render the heading 1`] = `
     </div>
     <ul
       aria-labelledby="faq-autosuggest-label"
-      class="c9"
+      class="c14"
       id="faq-autosuggest-menu"
       role="listbox"
     >
       <li
-        class="c10"
+        class="c15"
       >
         Nenhum resultado encontrado para 
          
