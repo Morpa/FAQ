@@ -1,5 +1,5 @@
 ---
-title: "rating must be one of the following values: FREE, pegi3, pegi7, pegi12, pegi16, pegi18 | GoG não tá retornando os ratings"
+title: "Rating must be one of the following values: FREE, pegi3, pegi7, pegi12, pegi16, pegi18 | GoG não tá retornando os ratings"
 ---
 
 Aparentemente a GoG mudou essa parte do rating para verificar de acordo com o país. Para o Brasil eles estão usando:
