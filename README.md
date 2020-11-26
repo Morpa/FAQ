@@ -25,7 +25,19 @@
 
 ## How to add a new faq?
 
-You must clone the repository and inside the folder "_faqs" add the question file following the pattern already existing in the other files.
+You must clone the repository and run
+
+```
+yarn faq
+```
+or
+
+```
+yarn faq Your-faq-title
+```
+
+The generated .md file will be inside the _faq folder with the name you entered
+
 
 
 

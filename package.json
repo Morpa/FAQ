@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile generators/plopfile.js",
+    "faq": "yarn plop --plopfile faq_generator/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
     "cache-faqs": "node scripts/cache.js"
