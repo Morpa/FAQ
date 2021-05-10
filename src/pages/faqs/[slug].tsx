@@ -66,7 +66,11 @@ const Faq = ({ postData }: PostDataProps) => {
                 {copied ? (
                   <Done size={25} title="Link Copiado!" />
                 ) : (
-                  <ContentCopy size={25} aria-label="Copiar Link" />
+                  <ContentCopy
+                    size={25}
+                    aria-label="Copiar Link"
+                    title="Copiar Link"
+                  />
                 )}
               </S.CopyWrapper>
             </S.Header>
