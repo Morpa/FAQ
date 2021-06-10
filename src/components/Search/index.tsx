@@ -85,9 +85,10 @@ const Search = ({
             if (inputValue !== undefined) {
               setValue(inputValue)
               setResults(
-                faqs.filter((faq: FaqProps) =>
-                  faq.slug.toLowerCase().includes(inputValue.toLowerCase())
-                )
+                faqs.filter((faq: FaqProps) => {
+                  const text = faq.title ?? faq.slug
+                  return text.toLowerCase().includes(inputValue.toLowerCase())
+                })
               )
               !!onInput && onInput(inputValue)
             }
